@@ -13,6 +13,7 @@ export const getData = async (url) => {
     const ts = new Date().getTime();
     const hash = await getHash(publicKey, privateKey, ts);
     const fullurl = url + "/v1/public/characters?ts=" + ts + "&apikey=" + publicKey + "&hash=" + hash;
+    console.log(fullurl)
     try {
         const response = await fetch(fullurl);
         const data = await response.json();
