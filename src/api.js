@@ -18,7 +18,7 @@ export const getData = async (url) => {
         const response = await fetch(fullurl);
         const data = await response.json();
         const charactersAvecImage = data.data.results.filter(character => {
-            return character.thumbnail && character.thumbnail.path !== "image_not_available";
+            return character.thumbnail && character.thumbnail.path && !character.thumbnail.path.includes("image_not_available");
         });
         const characters = charactersAvecImage.map(character => {
             return {
